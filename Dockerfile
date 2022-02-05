@@ -21,7 +21,7 @@ RUN \
     sqlite3 && \
   echo "**** install prowlarr ****" && \
   mkdir -p /app/prowlarr/bin && \
-  if [ -z ${PROWLARR_RELEASE+x} ]; then \
+  if [ -z ${PROWLARR_RELEASE:+x} ]; then \
     PROWLARR_RELEASE=$(curl -sL "https://prowlarr.servarr.com/v1/update/${PROWLARR_BRANCH}/changes?runtime=netcore&os=linux" \
     | jq -r '.[0].version'); \
   fi && \
